@@ -4,6 +4,8 @@ import OtpLayout from "./OtpLayout";
 
 function RegisterComponent() {
   const rangeRef: any = useRef(null);
+  let clock: any = useContext(otpContext);
+  const [timer, setTimer] = useState(60);
   const [modal, setModal] = useState("");
   let value: any = useContext(otpContext);
   const regexForRange = /^[4-7\b]+$/;
@@ -15,7 +17,8 @@ function RegisterComponent() {
     } else {
       let val = GenerateOTP();
       value.setOtp(val);
-      setModal("#myModal");
+      // setModal("#myModal");
+      setTimer(60);
       if (attempt !== 0) {
         setAttempt((val) => --val);
       }
@@ -61,7 +64,7 @@ function RegisterComponent() {
         </div>
       </center>
       {/* {value.otp >= 4 && value.otp <= 7 ? ( */}
-        <OtpLayout attempt={attempt} method={validateHandler} />
+      <OtpLayout timer={timer} attempt={attempt} method={validateHandler} />
       {/* ) : null} */}
     </div>
   );

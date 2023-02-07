@@ -5,17 +5,19 @@ import { otpContext } from "../App";
 type OtpLayoutType = {
   method: any;
   attempt: number;
+  timer: number;
 };
 
 function OtpLayout(props: OtpLayoutType) {
   let value: any = useContext(otpContext);
+  // let clock:any=useContext(otpContext)
   const [input, setInput] = useState<any>([]);
   const [refs, setRefs] = useState<any>([]);
   // UseState for enable/disable button
   const [disable, setDisable] = useState(true);
   const regexForValidation = /^[0-9\b]+$/;
   // UseState for timer
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(props.timer);
   const [press, setPress] = useState<any>([]);
   // UseState for alert message popup
   const [message, setMessage] = useState("");
@@ -50,7 +52,7 @@ function OtpLayout(props: OtpLayoutType) {
     divref.current.addEventListener("shown.bs.modal", function () {
       refs[0].current.focus();
     });
-  }, [timer]);
+  }, []);
   console.log(refs);
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>, index: any) => {
     if (regexForValidation.test(refs[index].current.value) === true) {
