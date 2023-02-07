@@ -1,0 +1,33 @@
+.title {
+  margin-top: 3em;
+}
+/* Input Field CSS */
+#input {
+  width: 4em;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+/* CSS For timer and wrong OTP alert */
+.wrong,
+.timer {
+  color: red;
+}
+
+.right {
+  color: green;
+}
+
+.wrongVal {
+  border: 2px solid red;
+}
+
+.rightVal {
+  border: 2px solid green;
+}
+
+/* Resend button CSS */
+.resendBtn {
+  float: left;
+  margin-right: 11em;
+}
